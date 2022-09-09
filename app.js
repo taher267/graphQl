@@ -1,20 +1,22 @@
-const express = require("express");
+const express = require('express');
 const app = express();
-const basicResolvers = require("./basicGQL/basicResolvers");
-const schema = require("./basicGQL/schema");
-const { graphqlHTTP } = require("express-graphql");
+const basicResolvers = require('./basicGQL/basicResolvers');
+const schema = require('./basicGQL/schema');
+const { graphqlHTTP } = require('express-graphql');
+const plug = require('graphql-playground');
 
 app.use(
-  "/graphql",
+  '/graphql',
   graphqlHTTP({
     schema,
     rootValue: basicResolvers,
     graphiql: true,
+    // Plugin: [plugin],
   })
 );
 
 app.use(`/`, (req, res) => {
-  res.send("Alhamdu lillah");
+  res.send('Alhamdu lillah');
 });
 app.listen(2001, () => console.log(`Server is listening on port 2001`));
 
