@@ -38,4 +38,18 @@ const product = async (par, { id }, cxt) => {
     console.log(e);
   }
 };
-export default { products, product };
+
+const categoryProducts = async ({ id }, args, cxt) => {
+  try {
+    if (!id) throw error(`Product id mandatory`);
+    if (!URI || !consumer_key || !consumer_secret) throw error(null, 500);
+    if (!parseInt(id)) throw error(`Product id should be number`);
+    const { data } = await axios.get(
+      `${URI}products?category=${parseInt(id)}&${pz_access}`
+    );
+    return data;
+  } catch (e) {
+    console.log(e);
+  }
+};
+export default { products, product, categoryProducts };

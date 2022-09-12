@@ -38,6 +38,7 @@ export default gql`
     stock: Int!
     onSale: Boolean
   }
+
   type Category {
     id: ID
     name: String!
@@ -48,7 +49,9 @@ export default gql`
     image: String
     menu_order: Int!
     count: Int!
+    products: [Product]!
   }
+
   type Product {
     id: ID!
     name: String!

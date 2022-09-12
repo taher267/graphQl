@@ -15,5 +15,32 @@ const categories = async (par, args, cxt) => {
     console.log(e);
   }
 };
+
+const category = async (par, { id }, cxt, info) => {
+  try {
+    if (!id) throw error(`Category id mandatory!`);
+    if (!consumer_key || !consumer_secret) throw error(null, 500);
+    if (!parseInt(id)) throw error(`Category id should be number`);
+    const { data } = await axios.get(
+      `${URI}products/categories/${id}?${pz_access}`
+    );
+    return data;
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+// const categoryProducts = async (par, { id }, cxt, info) => {
+//   try {
+//     if (!id) throw error(`Category id mandatory!`);
+//     if (!consumer_key || !consumer_secret) throw error(null, 500);
+//     const { data } = await axios.get(
+//       `${URI}products/categories/${id}?${pz_access}`
+//     );
+//     return data;
+//   } catch (e) {
+//     console.log(e);
+//   }
+// };
 // categories().then((d) => console.log(d));
-export default { categories };
+export default { categories, category };
