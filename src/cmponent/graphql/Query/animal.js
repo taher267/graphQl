@@ -1,7 +1,7 @@
-import { gql, useQuery } from '@apollo/client';
+import { gql } from '@apollo/client';
 
 export const ANIMAL_QRY = gql`
-  query ($id: Int!) {
+  query getAnimals($id: Int!) {
     animal(id: $id) {
       id
       title

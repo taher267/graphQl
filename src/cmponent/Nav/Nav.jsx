@@ -4,6 +4,9 @@ export default function Nav() {
     <ul style={{ listStyle: 'none' }}>
       <li>
         <NavLink to="/">Home</NavLink>
+      </li>{' '}
+      <li>
+        <NavLink to="/shop">Shop</NavLink>
       </li>
     </ul>
   );
