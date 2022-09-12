@@ -1,5 +1,5 @@
 node_modules
-models
-server.js
-resolvers.js
-typeDefs.js
+# models
+# server.js
+# resolvers.js
+# typeDefs.js
