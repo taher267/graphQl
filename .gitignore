@@ -5,4 +5,4 @@ node_modules
 # typeDefs.js
 .env
 
-#gi rm ./config/.env --cached
+#git rm ./config/.env --cached

@@ -7,10 +7,10 @@ import contexts from './context/contexts.js';
 const server = new ApolloServer({
   typeDefs,
   resolvers,
-  context: contexts,
+  context: ({ req, res }) => ({ ...contexts, req, res }),
   plugins: [ApolloServerPluginLandingPageLocalDefault({ embed: true })],
 });
 
-server.listen().then(({ url }) => {
+server.listen(4000).then(({ url }) => {
   console.log(`🚀  Server ready at ${url}`);
 });

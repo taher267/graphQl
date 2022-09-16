@@ -49,7 +49,7 @@ export default gql`
     image: String
     menu_order: Int!
     count: Int!
-    products: [Product]!
+    products(page: Int, limit: Int): Products!
   }
 
   type Product {
@@ -70,10 +70,15 @@ export default gql`
     attributes: [Attrs]
     _links: Links
   }
+  type Products {
+    totalProducts: String!
+    totalPages: String!
+    products: [Product!]!
+  }
   type Query {
-    products(page: Int, limit: Int): [Product]
+    products(page: Int, limit: Int): Products
     categories: [Category]
-    category(id: Int): Category
+    category(id: Int!, page: Int, limit: Int): Category
     singleProduct(id: Int!): Product
     mainCards: [MainCard]
     animals: [Animal]!
