@@ -1,15 +1,3 @@
-// export default function Card({ id, title, image }) {
-//   return (
-//     <div style={{ border: '1px soldi #ddd' }}>
-//       <p>{title}</p>
-//       <a target="_black" href={id}>
-//         Details
-//       </a>
-//       <img style={{ width: '100%' }} src={image} alt={title} />
-//     </div>
-//   );
-// }
-
 import * as React from 'react';
 import { styled } from '@mui/material/styles';
 import { Link } from 'react-router-dom';

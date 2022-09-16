@@ -3,52 +3,56 @@ import { gql } from '@apollo/client';
 export const PRODUCTS_QRY = gql`
   query getProducts($page: Int!, $limit: Int!) {
     products(page: $page, limit: $limit) {
-      id
-      name
-      slug
-      permalink
-      date_created
-      sku
-      price
-      regular_price
-      sale_price
-      description
-      stock_status
-      tags {
+      totalPages
+      totalProducts
+      products {
         id
         name
         slug
-      }
-      categories {
-        id
-        name
-        slug
-      }
-      images {
-        id
-        src
-        name
-      }
-      attributes {
-        id
-        visible
-        options
-      }
-      _links {
-        self {
-          href
+        permalink
+        date_created
+        # sku
+        price
+        regular_price
+        sale_price
+        description
+        stock_status
+        # tags {
+        #   id
+        #   name
+        #   slug
+        # }
+        # categories {
+        #   id
+        #   name
+        #   slug
+        # }
+        images {
+          id
+          src
+          name
         }
-        collection {
-          href
-        }
+        # attributes {
+        #   id
+        #   visible
+        #   options
+        # }
+        # _links {
+        #   self {
+        #     href
+        #   }
+        #   collection {
+        #     href
+        #   }
+        # }
       }
     }
   }
 `;
 
-export const CATEGORIES_QRY = gql`
-  {
-    categories {
+export const CATEGORY_PRODUCTS = gql`
+  query getCategory($id: Int!, $page: Int!, $limit: Int!) {
+    category(id: $id) {
       id
       name
       slug
@@ -58,6 +62,51 @@ export const CATEGORIES_QRY = gql`
       image
       menu_order
       count
+      products(page: $page, limit: $limit) {
+        totalPages
+        totalProducts
+        products {
+          id
+          name
+          slug
+          permalink
+          date_created
+          # sku
+          price
+          regular_price
+          sale_price
+          description
+          stock_status
+          # tags {
+          #   id
+          #   name
+          #   slug
+          # }
+          # categories {
+          #   id
+          #   name
+          #   slug
+          # }
+          images {
+            id
+            src
+            name
+          }
+          # attributes {
+          #   id
+          #   visible
+          #   options
+          # }
+          # _links {
+          #   self {
+          #     href
+          #   }
+          #   collection {
+          #     href
+          #   }
+          # }
+        }
+      }
     }
   }
 `;
